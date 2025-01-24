@@ -1,7 +1,7 @@
 # LDAP Directory Viewer
 
 This is a lightweight and simple-to-setup LDAP directory viewer built with React for the frontend and Node.js for the backend. The primary purpose of this project is to provide a clean and intuitive interface to browse users and groups in one or more LDAP directories. It supports querying multiple directories and retrieving user or group information seamlessly.
-
+![Image](https://github.com/user-attachments/assets/4e5b985e-4315-43a1-8f0a-49946784a258)
 ## Key Features
 
 - **Multi-Directory Support**: Allows switching between multiple LDAP directories (e.g., DirectoryOne and DirectoryTwo) with ease.
