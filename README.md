@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# LDAP Directory Viewer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a lightweight and simple-to-setup LDAP directory viewer built with React for the frontend and Node.js for the backend. The primary purpose of this project is to provide a clean and intuitive interface to browse users and groups in one or more LDAP directories. It supports querying multiple directories and retrieving user or group information seamlessly.
 
-## Available Scripts
+## Key Features
 
-In the project directory, you can run:
+- **Multi-Directory Support**: Allows switching between multiple LDAP directories (e.g., DirectoryOne and DirectoryTwo) with ease.
+- **Search Functionality**: Provides user and group search capabilities based on unique identifiers (e.g., user IDs or group names).
+- **Dynamic Configuration**: Easily configure directory connections and credentials through environment variables.
+- **Lightweight and Simple**: Designed to be minimalistic and easy to set up, requiring minimal resources.
+- **Customizable**: The project can be extended to include additional features, such as advanced filtering, editing entries, and authentication.
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Backend (`server.js`)
+The backend is built using Node.js and the `ldapts` library for interacting with LDAP directories. It exposes RESTful API endpoints for querying users and groups from configured directories.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Endpoints
+- **GET /api/DirectoryOne/user/:id**: Fetches user details by ID from DirectoryOne.
+- **GET /api/DirectoryOne/group/:id**: Fetches group details by name from DirectoryOne.
+- **GET /api/DirectoryTwo/user/:id**: Fetches user details by ID from DirectoryTwo.
+- **GET /api/DirectoryTwo/group/:id**: Fetches group details by name from DirectoryTwo.
 
-### `npm test`
+#### Environment Variables
+The backend uses environment variables (via the `dotenv` package) to configure LDAP directory connections:
+```env
+FIRST_URL=ldap://localhost:10389
+FIRST_DN=uid=admin,ou=system
+FIRST_PWD=secret
+SECOND_URL=ldap://localhost:10389
+SECOND_DN=uid=admin,ou=system
+SECOND_PWD=secret
+```
+These values can be adjusted to point to your specific LDAP directories and credentials.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend (`App.js`)
+The frontend is built with React, providing a simple UI for interacting with the backend.
 
-### `npm run build`
+#### Key UI Components
+- **Tabs**: Toggle between DirectoryOne and DirectoryTwo.
+- **Search Controls**: Select between user and group search, enter the identifier (e.g., user ID or group name), and fetch the information.
+- **Results Display**: Displays the fetched user or group information in a table format.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup Instructions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
+- Node.js (v16 or later recommended)
+- A running LDAP server (e.g., Apache Directory Server)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Steps to Set Up
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/ldap-directory-viewer.git
+   cd ldap-directory-viewer
+   ```
 
-### `npm run eject`
+2. **Install Dependencies**:
+    - For the backend:
+      ```bash
+      cd server
+      npm install
+      ```
+    - For the frontend:
+      ```bash
+      cd ../client
+      npm install
+      ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Configure Environment Variables**:
+   Create a `.env` file in the `server` directory with your LDAP directory details:
+   ```env
+   FIRST_URL=ldap://your-ldap-url:port
+   FIRST_DN=your-bind-dn
+   FIRST_PWD=your-password
+   SECOND_URL=ldap://your-second-ldap-url:port
+   SECOND_DN=your-second-bind-dn
+   SECOND_PWD=your-second-password
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Start the Server**:
+   ```bash
+   cd server
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. **Start the Client**:
+   ```bash
+   cd ../client
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+6. **Access the Application**:
+   Open your browser and navigate to `http://localhost:3000`.
 
-## Learn More
+## How to Customize
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Add More Directories
+You can add more directories by extending the environment variables and modifying the `server.js` file to handle additional directory connections.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Enhance Search Capabilities
+You can add filters or advanced search options by modifying the `filter` parameter in the `ldapts` search queries.
 
-### Code Splitting
+### Add Authentication
+Secure the viewer by adding authentication mechanisms (e.g., JWT, session-based authentication) in the backend.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Style the UI
+Customize the design by modifying the CSS in `App.css` to match your branding or preferences.
 
-### Analyzing the Bundle Size
+### Support Write Operations
+Extend the backend and frontend to support creating, updating, or deleting LDAP entries.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Lightweight Design
+This application is intentionally minimal, with a focus on simplicity and ease of use. The backend and frontend are lightweight, making it easy to deploy and use even on low-resource environments.
 
-### Making a Progressive Web App
+## Conclusion
+The LDAP Directory Viewer is a flexible and user-friendly tool for querying LDAP directories. Its simplicity makes it ideal for small teams or testing environments, while its extensibility allows it to grow to meet more complex needs. Set it up today and start exploring your directory data effortlessly!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -5,6 +5,7 @@
   "dependencies": {
     "concurrently": "^9.1.2",
     "cra-template": "1.2.0",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "ldapts": "^7.3.1",
     "react": "^19.0.0",
@@ -14,11 +15,14 @@
     "winston": "^3.17.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server/server.js",
+    "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": [
       "react-app",
