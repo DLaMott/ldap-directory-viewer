@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  openldap:
+    command: --copy-service -l debug
+    image: osixia/openldap:1.5.0
+    container_name: my-openldap-container
+    environment:
+      - LDAP_ORGANISATION=Example
+      - LDAP_DOMAIN=example.com
+      - LDAP_ADMIN_PASSWORD=admin
+      - LDAP_TLS=false
+      - LDAP_INITDATA=/docker-entrypoint-initdb.d/
+
+    ports:
+      - "389:389"  # LDAP
+    volumes:
+      - ldap-data:/var/lib/ldap
+      - ldap-config:/etc/ldap/slapd.d
+      - ./local-ldap:/docker-entrypoint-initdb.d/
+      - ./initial-entries.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/initial-entries.ldif
+
+volumes:
+  ldap-data:
+  ldap-config:
+  

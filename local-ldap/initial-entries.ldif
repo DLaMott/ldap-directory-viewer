@@ -1,0 +1,28 @@
+dn: ou=users,dc=example,dc=com
+objectClass: organizationalUnit
+ou: users
+
+dn: uid=user1,ou=users,dc=example,dc=com
+objectClass: inetOrgPerson
+uid: user1
+sn: User1
+cn: User One
+userPassword: password1
+mail: user1@example.com
+
+dn: uid=user2,ou=users,dc=example,dc=com
+objectClass: inetOrgPerson
+uid: user2
+sn: User2
+cn: User Two
+userPassword: password2
+mail: user2@example.com
+
+dn: ou=groups,dc=example,dc=com
+objectClass: organizationalUnit
+ou: groups
+
+dn: cn=group1,ou=groups,dc=example,dc=com
+objectClass: groupOfNames
+cn: group1
+member: uid=user1,ou=users,dc=example,dc=com
