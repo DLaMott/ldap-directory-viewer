@@ -2,10 +2,11 @@
 
 This is a lightweight and simple-to-setup LDAP directory viewer built with React for the frontend and Node.js for the backend. The primary purpose of this project is to provide a clean and intuitive interface to browse users and groups in one or more LDAP directories. It supports querying multiple directories and retrieving user or group information seamlessly.
 ![Image](https://github.com/user-attachments/assets/4e5b985e-4315-43a1-8f0a-49946784a258)
+![Image2](https://github.com/user-attachments/assets/1b730100-d1b5-47fa-8170-65708501c615)
 ## Key Features
 
-- **Multi-Directory Support**: Allows switching between multiple LDAP directories (e.g., DirectoryOne and DirectoryTwo) with ease.
-- **Search Functionality**: Provides user and group search capabilities based on unique identifiers (e.g., user IDs or group names).
+- **Multi-Directory Support**: Allows switching between multiple LDAP directories (e.g., DirectoryOne and DirectoryTwo) with ease. Developers can add more as needed.
+- **Search Functionality**: Provides user and group search capabilities based on unique identifiers (e.g., user IDs or group names). Can be adjusted per directory schema.
 - **Dynamic Configuration**: Easily configure directory connections and credentials through environment variables.
 - **Lightweight and Simple**: Designed to be minimalistic and easy to set up, requiring minimal resources.
 - **Customizable**: The project can be extended to include additional features, such as advanced filtering, editing entries, and authentication.
@@ -95,7 +96,7 @@ The frontend is built with React, providing a simple UI for interacting with the
 ## How to Customize
 
 ### Add More Directories
-You can add more directories by extending the environment variables and modifying the `server.js` file to handle additional directory connections.
+You can add more directories by extending the environment variables and modifying the `server.js` and `app.js` files to handle additional directory connections.
 
 ### Enhance Search Capabilities
 You can add filters or advanced search options by modifying the `filter` parameter in the `ldapts` search queries.
