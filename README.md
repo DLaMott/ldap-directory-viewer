@@ -74,6 +74,20 @@ The frontend is built with React, providing a simple UI for interacting with the
    SECOND_PWD=your-second-password
    ```
 
+   Included is an optional docker-compose.yml that spins up an openldap container that preloads a local ldap server. You can set up this by doing the following:
+
+   - Open a terminal within local-ldap
+   - Execute `docker compose up`
+   - Set the following env variables:
+  ```env  
+   FIRST_URL=ldap://localhost:389
+   SECOND_URL=ldap://localhost:389
+   FIRST_DN="cn=admin,dc=example,dc=com"
+   FIRST_PWD=admin
+   SECOND_DN="cn=admin,dc=example,dc=com"
+   SECOND_PWD=admin
+   ```
+
 7. **Start the project**:
 
 The porject is set to start the server and client concurrently. This can be adjust by editing the `package.json` file
