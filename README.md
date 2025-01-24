@@ -50,25 +50,21 @@ The frontend is built with React, providing a simple UI for interacting with the
 
 ### Steps to Set Up
 1. **Clone the Repository**:
+
    ```bash
-   git clone https://github.com/your-username/ldap-directory-viewer.git
+   git clone https://github.com/DLaMott/ldap-directory-viewer.git
    cd ldap-directory-viewer
    ```
 
-2. **Install Dependencies**:
-    - For the backend:
-      ```bash
-      cd server
-      npm install
-      ```
-    - For the frontend:
-      ```bash
-      cd ../client
-      npm install
-      ```
+3. **Install Dependencies**:
 
-3. **Configure Environment Variables**:
+      ```bash
+      npm install
+      ```
+      
+5. **Configure Environment Variables**:
    Create a `.env` file in the `server` directory with your LDAP directory details:
+   
    ```env
    FIRST_URL=ldap://your-ldap-url:port
    FIRST_DN=your-bind-dn
@@ -78,19 +74,14 @@ The frontend is built with React, providing a simple UI for interacting with the
    SECOND_PWD=your-second-password
    ```
 
-4. **Start the Server**:
+7. **Start the project**:
+
+The porject is set to start the server and client concurrently. This can be adjust by editing the `package.json` file
    ```bash
-   cd server
    npm start
    ```
 
-5. **Start the Client**:
-   ```bash
-   cd ../client
-   npm start
-   ```
-
-6. **Access the Application**:
+8. **Access the Application**:
    Open your browser and navigate to `http://localhost:3000`.
 
 ## How to Customize
